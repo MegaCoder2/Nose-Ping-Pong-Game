@@ -1,0 +1,27 @@
+body
+{
+
+}
+.heading
+{
+    width: 100%;
+    text-align: center;
+}
+.heading h2
+{
+    display: inline-block;
+}
+#imagemario
+{
+    width: 100%;
+}
+.heading button
+{
+    float: right;
+    border: 1px solid white;
+    margin-top: 12.5px;
+}
+#startplaying, #status
+{
+    font-size: 22px;
+}
