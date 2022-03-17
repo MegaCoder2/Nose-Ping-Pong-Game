@@ -64,6 +64,10 @@ if(gamestatus == "playing")
   fill("black");
   stroke("black");
   rect(0,0,20,700);
+
+  fill("red")
+  stroke("red")
+  circle(noseX, noseY, 20, 20)
   
     //funtion paddleInCanvas call 
     paddleInCanvas();
