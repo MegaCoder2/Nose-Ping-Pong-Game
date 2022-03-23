@@ -12,7 +12,8 @@ var score1 = 0, score2 =0;
 var paddle1Y;
 
 var  playerscore =0;
-var audio1;
+var hit;
+var missed
 var pcscore =0;
 //ball x and y and speedx speed y and radius
 var ball = {
@@ -24,7 +25,8 @@ var ball = {
 }
 function preload()
 {
-
+    hit = loadSound("ball_touch_paddel.wav")
+    missed = loadSound("missed.wav")
 }
 function setup(){
   var canvas =  createCanvas(700,600);
@@ -147,15 +149,18 @@ function move(){
    ball.x = ball.x + ball.dx;
    ball.y = ball.y + ball.dy;
    if(ball.x+ball.r>width-ball.r/2){
-       ball.dx=-ball.dx-0.5;       
+       ball.dx=-ball.dx-0.5;      
+       hit.play() 
    }
   if (ball.x-2.5*ball.r/2< 0){
   if (ball.y >= paddle1Y&& ball.y <= paddle1Y + paddle1Height) {
-    ball.dx = -ball.dx+0.5; 
+    ball.dx = -ball.dx+0.5;
+    hit.play() 
   }
   else{
     pcscore++;
     reset();
+    missed.play()
     navigator.vibrate(100);
   }
 }
@@ -166,7 +171,7 @@ if(pcscore ==4){
     fill("white");
     stroke("white");
     textSize(25)
-    text("Game Over!☹☹",width/2,height/2);
+    text("Game Over!",width/2,height/2);
     text("Reload The Page!",width/2,height/2+30)
     noLoop();
     pcscore = 0;
